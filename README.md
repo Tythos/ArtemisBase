@@ -16,10 +16,10 @@ Dependencies are referenced by submodule; in addition to utilities and math, thi
 
 ## WIP
 
-[ ] Header definition order probably needs to be reworked
+- [ ] Header definition order probably needs to be reworked
 
-[ ] No source files yet... duh
+- [ ] No source files yet... duh
 
-[ ] Need "internal" dependencies from other Artemis submodules
+- [ ] Need "internal" dependencies from other Artemis submodules
 
-[ ] Need "external" dependencies from core SDL and individual SDL submodules
+- [ ] Need "external" dependencies from core SDL and individual SDL submodules

@@ -20,9 +20,17 @@ add_library(${PROJECT_NAME} STATIC
     #"Vertex.cpp"
 )
 
+# add ArtemisUtility dependency
+add_subdirectory("ArtemisUtility/" EXCLUDE_FROM_ALL)
+target_include_directories(${PROJECT_NAME} PRIVATE "ArtemisUtility/")
+
 # add glew dependency
 add_subdirectory("glew-cmake/" EXCLUDE_FROM_ALL)
 target_include_directories(${PROJECT_NAME} PRIVATE "glew-cmake/include")
+
+# add KirkMath dependency
+add_subdirectory("KirkMath/" EXCLUDE_FROM_ALL)
+target_include_directories(${PROJECT_NAME} PRIVATE "KirkMath/")
 
 # add SDL dependency
 add_subdirectory("SDL/" EXCLUDE_FROM_ALL)

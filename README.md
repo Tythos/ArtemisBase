@@ -20,6 +20,8 @@ Dependencies are referenced by submodule; in addition to utilities and math, thi
 
 - [ ] No source files yet... duh
 
-- [ ] Need "internal" dependencies from other Artemis submodules
+- [x] Need "internal" dependencies from other Artemis submodules
 
-- [ ] Need "external" dependencies from core SDL and individual SDL submodules
+- [x] Need "external" dependencies from core SDL and individual SDL submodules
+
+- [ ] There's enough submodules to build now, but as we add source, more may be needed

@@ -4,14 +4,18 @@
 
 #pragma once
 
+#define _USE_MATH_DEFINES
+
 #include <ctime>
 #include <stdio.h>
 #include <fstream>
-#include <SDL.h>
+#include <math.h>
 #include <gl/glew.h>
+#include <gl/GLU.h>
+#include <gl/glu.h>
+#include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_opengl.h>
-#include <gl/glu.h>
 #include <SDL_thread.h>
 #include "ArtemisUtility.hpp"
 #include "KirkMath.hpp"

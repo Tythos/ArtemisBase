@@ -1,19 +1,20 @@
 cmake_minimum_required(VERSION 3.14)
 project(ArtemisBase)
+add_subdirectory("SDL/" EXCLUDE_FROM_ALL)
 add_library(${PROJECT_NAME} STATIC
+    "App.cpp"
+    "Camera.cpp"
+    "Event.cpp"
+    "EventList.cpp"
+    "Graphics.cpp"
+    #"Keyboard.cpp"
+    #"Light.cpp"
+    #"Mesh.cpp"
+    #"Model.cpp"
+    #"Object.cpp"
+    #"Panel.cpp"
     #"Skybox.cpp"
     #"Stopwatch.cpp"
-    #"Panel.cpp"
-    #"Object.cpp"
-    #"Model.cpp"
-    #"Vertex.cpp"
     #"TexCoord.cpp"
-    #"Mesh.cpp"
-    #"Light.cpp"
-    #"Keyboard.cpp"
-    "Graphics.cpp"
-    #"Event.cpp"
-    #"EventList.cpp"
-    #"Camera.cpp"
-    #"App.cpp"
+    #"Vertex.cpp"
 )

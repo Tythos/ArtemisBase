@@ -48,7 +48,7 @@ The standard CMake two-step should work once submodules are initialized:
 
 - [x] Need "external" dependencies from core SDL and individual SDL submodules
 
-- [x] There's enough submodules to build now, but as we add source, more may be needed
+~~- [x] There's enough submodules to build now, but as we add source, more may be needed~~
 
 - [ ] Start debugging builds!
 

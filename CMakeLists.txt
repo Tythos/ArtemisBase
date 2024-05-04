@@ -5,19 +5,20 @@ project(ArtemisBase)
 add_library(${PROJECT_NAME} STATIC
     "App.cpp"
     "Camera.cpp"
+    "Color.cpp"
     "Event.cpp"
     "EventList.cpp"
     "Graphics.cpp"
-    #"Keyboard.cpp"
-    #"Light.cpp"
-    #"Mesh.cpp"
-    #"Model.cpp"
-    #"Object.cpp"
-    #"Panel.cpp"
+    "Keyboard.cpp"
+    "Light.cpp"
+    "Mesh.cpp"
+    "Model.cpp"
+    "Object.cpp"
+    "Panel.cpp"
     #"Skybox.cpp"
     #"Stopwatch.cpp"
     #"TexCoord.cpp"
-    #"Vertex.cpp"
+    "Vertex.cpp"
 )
 
 # add ArtemisUtility dependency
@@ -39,3 +40,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE "SDL/include")
 # add SDL_ttf dependency
 add_subdirectory("SDL_ttf/" EXCLUDE_FROM_ALL)
 target_include_directories(${PROJECT_NAME} PRIVATE "SDL_ttf/")
+
+# add SDL_image dependency
+add_subdirectory("SDL_image/" EXCLUDE_FROM_ALL)
+target_include_directories(${PROJECT_NAME} PRIVATE "SDL_image/include")

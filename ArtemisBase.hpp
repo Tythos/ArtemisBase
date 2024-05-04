@@ -17,6 +17,7 @@
 #include <SDL_ttf.h>
 #include <SDL_opengl.h>
 #include <SDL_thread.h>
+#include <SDL_image.h>
 #include "ArtemisUtility.hpp"
 #include "KirkMath.hpp"
 
@@ -68,6 +69,42 @@ namespace ArtemisBase {
             float s = (float)(size);
             return toPix(s);
         }
+    };
+
+    class Texture
+    {
+    private:
+        GLuint _textureId;
+        SDL_Surface * _texture;
+        bool _isLoaded;
+    public:
+        Texture();
+        ~Texture();
+        bool loadFromFile(ArtemisUtility::String filename);
+        bool loadFromSurface(SDL_Surface* surf);
+        bool unload();
+        bool isLoaded() { return _isLoaded; }
+        bool bind();
+        bool unbind();
+        int getId() { return _textureId; }
+    };    
+
+    class Color {
+    private:
+    protected:
+    public:
+        float r;
+        float g;
+        float b;
+        float a;
+        
+        Color();
+        Color(float fr, float fg, float fb, float fa);
+        void set(float fr, float fg, float fb, float fa);
+        void setAll();
+        void setColor();
+        void setDiffuseMat();
+        void setAmbientMat();
     };
 
     class Skybox : public Object {

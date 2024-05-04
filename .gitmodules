@@ -15,3 +15,7 @@
 [submodule "KirkMath"]
 	path = KirkMath
 	url = https://github.com/Tythos/KirkMath.git
+[submodule "SDL_image"]
+	path = SDL_image
+	url = https://github.com/libsdl-org/SDL_image
+	branch = SDL2

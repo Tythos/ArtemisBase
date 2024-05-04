@@ -42,13 +42,13 @@ The standard CMake two-step should work once submodules are initialized:
 
 - [ ] Header definition order probably needs to be reworked
 
-- ~~[x] No source files yet... duh~~
+- [x] No source files yet... duh
 
-- ~~[x] Need "internal" dependencies from other Artemis submodules~~
+- [x] Need "internal" dependencies from other Artemis submodules
 
-- ~~[x] Need "external" dependencies from core SDL and individual SDL submodules~~
+- [x] Need "external" dependencies from core SDL and individual SDL submodules
 
-- ~~[x] There's enough submodules to build now, but as we add source, more may be needed~~
+- [x] There's enough submodules to build now, but as we add source, more may be needed
 
 - [ ] Start debugging builds!
 

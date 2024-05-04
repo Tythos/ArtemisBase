@@ -18,6 +18,7 @@
 #include <SDL_opengl.h>
 #include <SDL_thread.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include "ArtemisUtility.hpp"
 #include "KirkMath.hpp"
 
@@ -31,6 +32,64 @@ namespace ArtemisBase {
     enum ScreenUnit {
         UNIT_PIX,
         UNIT_PCT
+    };
+
+    enum MouseState {
+        NO_BUTTONS,
+        LEFT_BUTTON,
+        RIGHT_BUTTON,
+        BOTH_BUTTONS
+    };
+
+    enum ConsoleState {
+        CS_UP,
+        CS_DOWN,
+        CS_MOVING_UP,
+        CS_MOVING_DOWN
+    };
+
+    struct ConsoleLine {
+        ArtemisUtility::String contents;
+        int ttl;
+        ConsoleLine * next;
+
+        ConsoleLine() {
+            contents = "";
+            next = NULL;
+        }
+
+        ConsoleLine(ArtemisUtility::String stuff) {
+            contents = stuff;
+            next = NULL;
+        }
+
+        ~ConsoleLine() {
+            if (next != NULL) {
+                delete next;
+                next = NULL;
+            }
+        }
+
+        int numLines() {
+            if (next == NULL) { return 1; }
+            else { return next->numLines() + 1; }
+        }
+
+        ConsoleLine* get(int n) {
+            if (n < 0) {
+                // Negative index; return this
+                return this;
+            } else if (next == NULL && n > 0) {
+                // Reached end; return last
+                return this;
+            } else if (n == 0) {
+                // Reached desired location; return
+                return this;
+            } else {
+                // Not there yet; increment
+                return next->get(n-1);
+            }
+        }
     };
 
     struct ScreenDimension {
@@ -540,6 +599,95 @@ namespace ArtemisBase {
         void pan(float dx, float dy, float dz);
         void focus(float x, float y, float z);
         void zoomFocus(float dz);
+    };
+
+
+    class Mouse
+    {
+    private:
+        int currX;
+        int currY;
+        int prevX;
+        int prevY;
+        MouseState currState;
+        MouseState prevState;
+    protected:
+    public:
+        Mouse(void);
+        ~Mouse(void);
+        void update();
+        void update(SDL_Event eve);
+
+        int getCurrX() { return currX; }
+        int getCurrY() { return currY; }
+        int getPrevX() { return prevX; }
+        int getPrevY() { return prevY; }
+        int getDX() { return currX - prevX; }
+        int getDY() { return currY - prevY; }
+        ScreenDimension getXCoord();
+        ScreenDimension getYCoord();
+        MouseState getCurrState() { return currState; }
+        MouseState getPrevState() { return prevState; }
+    };
+
+    class Console : public Panel {
+    private:
+        ConsoleLine * lines;
+        ScreenDimension speed; // Speed at which console is animated {unit / sec)
+        ScreenDimension limit; // Limit (from top of screen) of visible console
+        ArtemisUtility::String font;
+        ArtemisBase::Color fontColor;
+        float fontSize;
+    protected:
+    public:
+        ConsoleState state;
+        Console();
+        ~Console();
+        void addLine(ArtemisUtility::String contents);
+        ArtemisUtility::String getLine(int n);
+        void render(Graphics * context);
+        void update(float dt);
+        void setFont(ArtemisUtility::String f);
+        void setFontColor(float r, float g, float b);
+        void setFontSize(float pct);
+    };
+
+    class Cursor : public Panel {
+    private:
+        Mouse* mouse;
+    protected:
+    public:
+        Cursor(Mouse * m);
+        ~Cursor(void);
+        void render(Graphics * context);
+    };
+
+    class Soundboard {
+    private:
+        bool isInit;
+        int audioRate;
+        int audioFormat;
+        int numChannels;
+        int bufferSize;
+        int fadeLength; // Length of fade effects, in ms
+        float volume;
+    protected:
+    public:
+        Soundboard();
+        ~Soundboard();
+
+        // Sound effects
+        Mix_Chunk* loadSound(ArtemisUtility::String filename);
+        void playSound(ArtemisUtility::String filename);
+        void playSound(Mix_Chunk* sound);
+
+        // Music songs
+        Mix_Music* loadSong(ArtemisUtility::String filename);
+        void playSong(ArtemisUtility::String filename);
+        void playSong(Mix_Music* mus);
+        void stopSong();
+        bool isPlaying();
+        bool repeatSongs;
     };
 
     class App {

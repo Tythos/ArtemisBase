@@ -86,7 +86,7 @@ void ArtemisBase::Camera::print() {
 	debugFile << "Up: {" <<  up->getVecI() << ", " << up->getVecJ() << ", " << up->getVecK() << "\n";*/
 }
 
-void ArtemisBase::Camera::setSkyboxTexture(KirkMath::String filename) {
+void ArtemisBase::Camera::setSkyboxTexture(ArtemisUtility::String filename) {
 	if (skybox == NULL) {
 		skybox = new ArtemisBase::Skybox();
 		skybox->setRadius(farClip);

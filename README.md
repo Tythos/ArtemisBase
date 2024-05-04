@@ -40,7 +40,7 @@ The standard CMake two-step should work once submodules are initialized:
 
 ## WIP
 
-- [ ] Header definition order probably needs to be reworked
+- [x] Header definition order probably needs to be reworked
 
 - [x] No source files yet... duh
 
@@ -50,6 +50,6 @@ The standard CMake two-step should work once submodules are initialized:
 
 - [x] There's enough submodules to build now, but as we add source, more may be needed
 
-- [ ] Start debugging builds!
+- [x] Start debugging builds!
 
 Utilimately we'd like a library output that can be used to build old Artemis-based projects.

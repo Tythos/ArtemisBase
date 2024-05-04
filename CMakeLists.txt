@@ -21,6 +21,7 @@ add_library(${PROJECT_NAME} STATIC
     "Skybox.cpp"
     "Soundboard.cpp"
     "Stopwatch.cpp"
+    "TexCoord.cpp"
     "Texture.cpp"
     "Typewriter.cpp"
     "Vertex.cpp"
